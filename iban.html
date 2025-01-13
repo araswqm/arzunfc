@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBAN</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <p id="text-to-copy">TR57 0001 0003 4455 6406 4850 01</p>
+        <button class="btn" onclick="copyText()">Metni Kopyala</button>
+        <p class="info" id="copy-info"></p>
+    </div>
+
+
+    <script>
+        function copyText() {
+            const text = document.getElementById('text-to-copy').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const info = document.getElementById('copy-info');
+                info.textContent = "Metin başarıyla kopyalandı!";
+                setTimeout(() => {
+                    info.textContent = "";
+                }, 2000);
+            }).catch(err => {
+                alert("Kopyalama başarısız oldu: " + err);
+            });
+        }
+    </script>
+</body>
+</html>
