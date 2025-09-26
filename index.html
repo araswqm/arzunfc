@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phokaia Pilates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+  <div class="bg-gray-800 p-6 rounded-2xl shadow-xl w-full max-w-md text-center relative">
+
+    <div class="absolute -top-12 left-1/2 transform -translate-x-1/2">
+      <img src="logo.png" alt="Logo" class="w-16 h-16 rounded-xl shadow-lg">
+    </div>
+
+    <div class="flex items-center justify-between gap-3 bg-gray-900 rounded-xl px-4 py-3 mb-6 mt-6">
+      <span id="displayText" class="text-lg font-semibold">Yükleniyor...</span>
+      <button onclick="copyText()" 
+        class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-xl font-semibold transition-colors">
+        Kopyala
+      </button>
+    </div>
+
+    <button onclick="window.location.href='https://search.google.com/local/writereview?placeid=ChIJ65nD9eHLuxQRrvRaL01zaqc'"
+      class="w-full bg-purple-600 hover:bg-purple-700 px-4 py-3 rounded-xl font-semibold transition-colors">
+      Bizi Puanlayın!
+    </button>
+  </div>
+
+  <script>
+    function getParam(name) {
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name);
+    }
+    function copyText() {
+      const text = document.getElementById("displayText").innerText;
+      navigator.clipboard.writeText(text);
+    }
+    window.onload = () => {
+      const q = getParam("q") || "Metin bulunamadı";
+      document.getElementById("displayText").innerText = q;
+    }
+  </script>
+
+</body>
+</html>
